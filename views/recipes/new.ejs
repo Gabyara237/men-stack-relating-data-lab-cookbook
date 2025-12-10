@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Recipe</title>
+</head>
+<body>
+    <form action="/recipes" method="POST">
+        <label for="name"> Name:</label>
+        <input type="text" name="name" id="name" required >
+
+        <label for="instructions">Instructions</label>
+        <input type="textarea" name="instructions" id="instructions">         
+        <button type="submit">Create New Recipe</button>
+    </form>
+    
+</body>
+</html>
