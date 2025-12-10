@@ -6,7 +6,15 @@ const Recipe = require('../models/recipe.js');
 const Ingredient = require('../models/ingredient.js');
 
 router.get('/', async(req,res)=> {
-    res.render('recipes/index.ejs');
+    try{
+        const allRecipes = await Recipe.find({owner:req.session.user._id})
+        res.render('recipes/index.ejs',{
+            recipes: allRecipes,
+        });
+    }catch(error){
+        console.log(error);
+        res.redirect('/');
+    }    
 });
 
 
