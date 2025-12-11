@@ -7,12 +7,14 @@
     <title>Community</title>
 </head>
 <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to our community </h1>
-    <ul>
-        <%allUsers.forEach((user) =>{%>
-            <a href="/users/<%=user._id%>"><li><%=user.username%></li></a>
-        <%})%>
-    </ul>
+    <div class="main-container">
+        <%- include('../partials/_navbar.ejs') %>
+        <h2>Welcome to our community </h2>
+        <ul>
+            <%allUsers.forEach((user) =>{%>
+                <a href="/users/<%=user._id%>"><li><%=user.username%></li></a>
+            <%})%>
+        </ul>
+    </div>
 </body>
 </html>

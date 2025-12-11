@@ -38,25 +38,52 @@ h2{
 .actions{
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 a{
     text-decoration: none; 
 }
 
-.action{
-    padding: 10px;
-    background-color: #000000;
-    border-radius: 10px;
-    color: white;
-    font-weight:500;
-    text-decoration: none; 
-}
-
-form{		
+.form{		
     display: flex;
     flex-direction: column;
     gap: 10px; 		
     width: max-content;
     margin-bottom: 40px;
+}
+
+.a-nav{
+    color:  rgb(152 74 0);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    justify-content: space-around;
+}
+
+.all-recipe-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 40px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.delete{
+    background-color: #9e1010;
+    color: #ffffff;
+    padding: 7px;
+    border-color: #9e1010;
+}
+
+.delete:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+
 }

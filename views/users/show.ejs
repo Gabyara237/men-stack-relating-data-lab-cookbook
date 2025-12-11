@@ -7,20 +7,24 @@
     <title><%=userProfile.username%>'s profile</title>
 </head>
 <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1><%=userProfile.username%>'s profile</h1>
-    <%if(userRecipes.length === 0) {%>
-        <p><%=userProfile.username%> has not created any recipes yet</p>
-    <%}else{%>
-        <h4><%=userProfile.username%>'s recipes:</h4>
-        <%userRecipes.forEach((recipe) =>{%>
+    <div class="main-container">
+        <%- include('../partials/_navbar.ejs') %>
+        <h2><%=userProfile.username%>'s profile</h2>
+        <%if(userRecipes.length === 0) {%>
+            <p><%=userProfile.username%> has not created any recipes yet</p>
+        <%}else{%>
+            <h4><%=userProfile.username%>'s recipes:</h4>
             <ul>
-                <li>
-                    <%=recipe.name%>        
-                </li>
+                <%userRecipes.forEach((recipe) =>{%>
+        
+                    <li>
+                        <%=recipe.name%>        
+                    </li>
+                    
+                <%})%>  
             </ul>
-        <%})%>  
-    <%}%> 
+        <%}%> 
+    </div>
 
 </body>
 </html>
