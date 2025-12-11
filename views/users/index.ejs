@@ -10,7 +10,7 @@
     <h1>Welcome to our community </h1>
     <ul>
         <%allUsers.forEach((user) =>{%>
-            <li><%=user.username%></li>
+            <a href="/users/<%=user._id%>"><li><%=user.username%></li></a>
         <%})%>
     </ul>
 </body>
