@@ -5,7 +5,6 @@ const User = require('../models/user.js');
 const Recipe = require("../models/recipe");
 router.get('/', async (req,res)=>{
     const allUsers = await User.find({});
-    console.log(allUsers);
     res.render("users/index.ejs",{allUsers});
 })
 
