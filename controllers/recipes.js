@@ -29,6 +29,8 @@ router.post('/',async(req,res)=>{
 
         const newRecipe = new Recipe(req.body);
         newRecipe.owner = req.session.user._id;
+
+        const ingredientSet = new Set();
         
         let selected;
         if (selectIngredients) {
@@ -43,16 +45,30 @@ router.post('/',async(req,res)=>{
 
         if(selected.length>0){
             selected.forEach((ingredient_id)=>{
-                newRecipe.ingredients.push(ingredient_id)
+                if(!ingredientSet.has(ingredient_id)){
+                    newRecipe.ingredients.push(ingredient_id);
+                    ingredientSet.add(ingredient_id);
+                }
             })
         }
 
         if(newIngredients && newIngredients.trim()!== ""){
-            const addedIngredients = newIngredients.split(',');
+            const addedIngredients = newIngredients.split(',').map(ingredient=>ingredient.trim()).filter(ingredient => ingredient !=="");
 
             for(const ingredient of addedIngredients){
-                const createIngredient = await Ingredient.create({name:ingredient});
-                newRecipe.ingredients.push(createIngredient._id);
+                const normalizedIngredient = ingredient.toLowerCase();
+
+                let ingredientToAdd = await Ingredient.findOne({name:normalizedIngredient});
+
+                if(!ingredientToAdd){
+                    ingredientToAdd = await Ingredient.create({name:normalizedIngredient});
+                }
+
+                const ingredientIdString = ingredientToAdd._id.toString();
+                if(!ingredientSet.has(ingredientIdString)){
+                    newRecipe.ingredients.push(ingredientToAdd._id);
+                    ingredientSet.add(ingredientIdString);
+                }
             }
         }
 
