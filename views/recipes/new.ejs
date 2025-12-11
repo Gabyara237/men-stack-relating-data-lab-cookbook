@@ -18,7 +18,8 @@
             <textarea name="instructions" id="instructions"></textarea>
             
             <%if(ingredients.length>0){%>
-                <p>Choose the ingredients for your recipe or create new ones</p>
+                <p>Choose the ingredients for your recipe or create new ones:</p>
+                <p class="tip">Hold <strong>CTRL</strong> (Windows/Linux) or <strong>CMD</strong> (Mac) to select multiple ingredients.</p>
                 <select id="selectIngredients" name="selectedIngredients" multiple size="5">
                     <%ingredients.forEach((ingredient) =>{%>
                         <option value="<%=ingredient._id%>"> <%=ingredient.name%> </option> 

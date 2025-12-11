@@ -87,3 +87,14 @@ a{
     transform: scale(1.1);
 
 }
+
+.tip{
+    font-size: 0.9rem;
+    color: #444;
+    background: #fff8d6;
+    border-left: 4px solid #f0c419;
+    padding: 8px 10px;
+    margin: auto;
+    border-radius: 4px;
+    font-style: italic;
+}
