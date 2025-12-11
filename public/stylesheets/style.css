@@ -14,11 +14,14 @@ body{
     font-family: "Funnel Display", sans-serif;
 }
 
-h1{
+h1,h2{
     font-family: cursive;
     font-size: 70px;
     font-weight: bold;
     color: #000000;
+}
+h2{
+    font-size: 50px;
 }
 
 .main-container{
@@ -26,7 +29,10 @@ h1{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .actions{
@@ -47,3 +53,10 @@ a{
     text-decoration: none; 
 }
 
+form{		
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 		
+    width: max-content;
+    margin-bottom: 40px;
+}
