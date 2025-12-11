@@ -24,10 +24,10 @@ router.get('/new', async(req,res) =>{
 
 router.post('/',async(req,res)=>{
     try{
-        const owner = req.session.user._id;
-        req.body.owner = owner;
-        await Recipe.create(req.body)
-
+        const newRecipe = new Recipe(req.body);
+        newRecipe.owner = req.session.user._id;
+        await newRecipe.save();
+        
         res.redirect("/recipes");
 
     }catch (error){
@@ -36,4 +36,6 @@ router.post('/',async(req,res)=>{
     }
 
 })
+
+
 module.exports = router;
