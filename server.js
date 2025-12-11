@@ -10,7 +10,6 @@ const path = require("path");
 
 const authController = require('./controllers/auth.js');
 const recipesController = require('./controllers/recipes.js');
-const ingredientsController = require('./controllers/ingredients.js');
 const usersController = require('./controllers/users.js');
 
 const isSigneId = require('./middleware/is-signed-in.js');
@@ -48,7 +47,6 @@ app.use(passUserToView);
 app.use('/auth', authController);
 app.use(isSigneId);
 app.use('/recipes',recipesController);
-app.use('/ingredients', ingredientsController);
 app.use('/users', usersController);
 
 app.listen(port, () => {
