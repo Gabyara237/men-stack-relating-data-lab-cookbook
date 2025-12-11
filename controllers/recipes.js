@@ -36,5 +36,19 @@ router.post('/',async(req,res)=>{
 
 })
 
+router.get('/:recipeId',async(req,res)=>{
+    try{
+        const recipe = await Recipe.findById(req.params.recipeId);
+        res.locals.recipe = recipe;
+        res.render('recipes/show.ejs');
+
+    }catch(error){
+        console.log(error);
+        res.redirect('/')
+    }
+
+})
+
+
 
 module.exports = router;

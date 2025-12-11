@@ -15,7 +15,7 @@
     <%}else{%>
         <%recipes.forEach((recipe) =>{%>
             <ul>
-                <li><%=recipe.name%></li>
+                <a href="/recipes/<%=recipe._id%>"><li><%=recipe.name%></li></a>
             </ul>
         <%})%>  
     <%}%>  
