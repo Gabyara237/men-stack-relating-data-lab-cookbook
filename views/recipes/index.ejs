@@ -15,7 +15,14 @@
     <%}else{%>
         <%recipes.forEach((recipe) =>{%>
             <ul>
-                <a href="/recipes/<%=recipe._id%>"><li><%=recipe.name%></li></a>
+                <a href="/recipes/<%=recipe._id%>">
+                    <li>
+                        <%=recipe.name%>
+                        <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST">
+                            <button type="submit">Delete Recipe</button>
+                        </form>
+                    </li>
+                </a>  
             </ul>
         <%})%>  
     <%}%>  
