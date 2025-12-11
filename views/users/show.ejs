@@ -6,6 +6,20 @@
     <title><%=userProfile.username%>'s profile</title>
 </head>
 <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1><%=userProfile.username%>'s profile</h1>
+    <%if(userRecipes.length === 0) {%>
+        <p><%=userProfile.username%> has not created any recipes yet</p>
+    <%}else{%>
+        <h4><%=userProfile.username%>'s recipes:</h4>
+        <%userRecipes.forEach((recipe) =>{%>
+            <ul>
+                <li>
+                    <%=recipe.name%>        
+                </li>
+            </ul>
+        <%})%>  
+    <%}%> 
+
 </body>
 </html>
