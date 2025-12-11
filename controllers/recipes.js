@@ -69,4 +69,41 @@ router.delete('/:recipeId', async(req,res)=>{
 })
 
 
+router.get('/:recipeId/edit', async (req,res)=>{
+
+    try{
+        const recipe = await Recipe.findById(req.params.recipeId);
+
+        if(recipe.owner.equals(req.session.user._id)){
+
+            return res.render('recipes/edit.ejs',{recipe});
+        }else{
+            return res.redirect('/');
+        }
+    }catch (error){
+        console.log(error);
+        res.redirect('/')
+    }
+})
+
+router.put('/:recipeId', async (req,res) =>{
+    try{
+        const recipe = await Recipe.findById(req.params.recipeId);
+
+        if(recipe.owner.equals(req.session.user._id)){
+           
+            recipe.set(req.body)
+            await recipe.save();
+            return res.redirect(`/recipes/${recipe._id}`);
+
+        }else{
+            res.redirect('/')
+        }
+        
+    }catch (error) {
+        console.log(error);
+        res.redirect('/')
+    }
+})
+
 module.exports = router;
