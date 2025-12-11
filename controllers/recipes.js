@@ -8,9 +8,8 @@ const Ingredient = require('../models/ingredient.js');
 router.get('/', async(req,res)=> {
     try{
         const allRecipes = await Recipe.find({owner:req.session.user._id})
-        res.render('recipes/index.ejs',{
-            recipes: allRecipes,
-        });
+        res.locals.recipes = allRecipes;
+        res.render('recipes/index.ejs');
     }catch(error){
         console.log(error);
         res.redirect('/');
@@ -27,7 +26,7 @@ router.post('/',async(req,res)=>{
         const newRecipe = new Recipe(req.body);
         newRecipe.owner = req.session.user._id;
         await newRecipe.save();
-        
+
         res.redirect("/recipes");
 
     }catch (error){
